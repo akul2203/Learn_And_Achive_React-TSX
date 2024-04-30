@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CUSTOME CSS  -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- BOOTSTRAP CSS  -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- FONT CSS  -->
+    <link rel="stylesheet" href="assets/css/stylesheet.css" />
+    <!-- GOGGLE ICON-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <!-- FLATICON-->
+    <link rel="stylesheet" href="assets/css/uicons-bold-rounded.css" />
+    <link rel="stylesheet" href="assets/css/uicons-regular-straight.css" />
+    <link rel="stylesheet" href="assets/css/uicons-solid-rounded.css" />
+    <link rel="stylesheet" href="assets/css/uicons-solid-straight.css" />
+    <link rel="stylesheet" href="assets/css/uicons-regular-rounded.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <!-- progress bar -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/butterup.min.css" />
+    <title>Learn and Achieve Dashboard</title>
+  </head>
+  <style>
+    #btn2 {
+      display: none;
+    }
+  </style>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!-- scripts for main -->
+
+    <!-- scripts links -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <script src="assets/js/butterup.min.js"></script>
+
+    <!-- progress bar scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    
+
+    <!-- Question Bank  progress bar -->
+
+    <script>
+      $(".btn-next2").on("click", function () {
+        var currentStepNum = $("#checkout-progress2").data("current-step");
+        var nextStepNum = currentStepNum + 1;
+        var currentStep = $(".step.step-" + currentStepNum);
+        var nextStep = $(".step.step-" + nextStepNum);
+        var progressBar = $("#checkout-progress2");
+        $(".btn-prev2").removeClass("disabled");
+        $("#sectionAdd" + currentStepNum).toggle();
+        $("#sectionAdd" + nextStepNum).toggle();
+        if (nextStepNum == 3) {
+          $(this).toggle();
+          $(".btn-submit2").toggle();
+        }
+
+        $(".checkout-progress")
+          .removeClass(".step-" + currentStepNum)
+          .addClass(".step-" + (currentStepNum + 1));
+
+        currentStep.removeClass("active").addClass("valid");
+        currentStep.find("span").addClass("opaque");
+        currentStep.find(".fa.fa-check").removeClass("opaque");
+
+        nextStep.addClass("active");
+        progressBar
+          .removeAttr("class")
+          .addClass("step-" + nextStepNum)
+          .data("current-step", nextStepNum);
+      });
+
+      $(".btn-submit2").on("click", function () {
+        $(".btn-submit2").toggle("disabled");
+        $(".btn-prev2").toggle();
+        var currentStepNum = $("#checkout-progress2").data("current-step");
+        var currentStep = $(".step.step-" + currentStepNum);
+        currentStep.removeClass("active").addClass("valid");
+        currentStep.find(".fa.fa-check").removeClass("opaque");
+      });
+
+      $(".btn-prev").on("click", function () {
+        var currentStepNum = $("#checkout-progress2").data("current-step");
+        var prevStepNum = currentStepNum - 1;
+        var currentStep = $(".step.step-" + currentStepNum);
+        var prevStep = $(".step.step-" + prevStepNum);
+        var progressBar = $("#checkout-progress2");
+        $(".btn-next2").removeClass("disabled");
+        $("#sectionAdd" + currentStepNum).toggle();
+        $("#sectionAdd" + prevStepNum).toggle();
+        if (currentStepNum == 3) {
+          $(".btn-submit2").toggle();
+          $(".btn-next2").toggle();
+        }
+        if (currentStepNum == 1) {
+          return false;
+        }
+        if (prevStepNum == 1) {
+          $(this).addClass("disabled");
+        }
+        $(".checkout-progress")
+          .removeClass(".step-" + currentStepNum)
+          .addClass(".step-" + prevStepNum);
+
+        currentStep.removeClass("active");
+        prevStep.find("span").removeClass("opaque");
+        prevStep.find(".fa.fa-check").addClass("opaque");
+
+        prevStep.addClass("active").removeClass("valid");
+        progressBar
+          .removeAttr("class")
+          .addClass("step-" + prevStepNum)
+          .data("current-step", prevStepNum);
+      });
+    </script>
+
+    <!--  Study Material  progress bar -->
+    <script>
+      $(".btn-next").on("click", function () {
+        var currentStepNum = $("#checkout-progress").data("current-step");
+        var nextStepNum = currentStepNum + 1;
+        var currentStep = $(".step.step-" + currentStepNum);
+        var nextStep = $(".step.step-" + nextStepNum);
+        var progressBar = $("#checkout-progress");
+        $(".btn-prev").removeClass("disabled");
+        $("#section" + currentStepNum).toggle();
+        $("#section" + nextStepNum).toggle();
+        if (nextStepNum == 3) {
+          $(this).toggle();
+          $(".btn-submit").toggle();
+        }
+
+        $(".checkout-progress")
+          .removeClass(".step-" + currentStepNum)
+          .addClass(".step-" + (currentStepNum + 1));
+
+        currentStep.removeClass("active").addClass("valid");
+        currentStep.find("span").addClass("opaque");
+        currentStep.find(".fa.fa-check").removeClass("opaque");
+
+        nextStep.addClass("active");
+        progressBar
+          .removeAttr("class")
+          .addClass("step-" + nextStepNum)
+          .data("current-step", nextStepNum);
+      });
+
+      $(".btn-submit").on("click", function () {
+        $(".btn-submit").toggle("disabled");
+        $(".btn-prev").toggle();
+        var currentStepNum = $("#checkout-progress").data("current-step");
+        var currentStep = $(".step.step-" + currentStepNum);
+        currentStep.removeClass("active").addClass("valid");
+        currentStep.find(".fa.fa-check").removeClass("opaque");
+      });
+
+      $(".btn-prev").on("click", function () {
+        var currentStepNum = $("#checkout-progress").data("current-step");
+        var prevStepNum = currentStepNum - 1;
+        var currentStep = $(".step.step-" + currentStepNum);
+        var prevStep = $(".step.step-" + prevStepNum);
+        var progressBar = $("#checkout-progress");
+        $(".btn-next").removeClass("disabled");
+        $("#section" + currentStepNum).toggle();
+        $("#section" + prevStepNum).toggle();
+        if (currentStepNum == 3) {
+          $(".btn-submit").toggle();
+          $(".btn-next").toggle();
+        }
+        if (currentStepNum == 1) {
+          return false;
+        }
+        if (prevStepNum == 1) {
+          $(this).addClass("disabled");
+        }
+        $(".checkout-progress")
+          .removeClass(".step-" + currentStepNum)
+          .addClass(".step-" + prevStepNum);
+
+        currentStep.removeClass("active");
+        prevStep.find("span").removeClass("opaque");
+        prevStep.find(".fa.fa-check").addClass("opaque");
+
+        prevStep.addClass("active").removeClass("valid");
+        progressBar
+          .removeAttr("class")
+          .addClass("step-" + prevStepNum)
+          .data("current-step", prevStepNum);
+      });
+    </script>
+
+    <!-- SIDEBAR TOGGLE BTN SCRIPT -->
+    <script>
+      let Buttons = document.querySelectorAll(".selectSection button");
+
+      // loop through the buttons using for..of
+      for (let button of Buttons) {
+        // listen for a click event
+        button.addEventListener("click", (e) => {
+          // et = event target
+          const et = e.target;
+          // slect active class
+          const active = document.querySelector(".active");
+          // check for the button that has active class and remove it
+          if (active) {
+            active.classList.remove("active");
+          }
+          // add active class to the clicked element
+          et.classList.add("active");
+
+          // select all classes with the name content
+          let allContent = document.querySelectorAll(".content");
+
+          // loop through all content classes
+          for (let content of allContent) {
+            // display the content if the class has the same data-attribute as the button
+            if (
+              content.getAttribute("data-number") ===
+              button.getAttribute("data-number")
+            ) {
+              content.style.display = "block";
+            }
+            // if it's not equal then hide it.
+            else {
+              content.style.display = "none";
+            }
+          }
+        });
+      }
+    </script>
+
+    <!-- BOXES CHANGE SCRIPT -->
+    <script>
+      // BOX1
+
+      var button1 = false;
+      var button2 = false;
+      function btn1_controller() {
+        // opening fresh box1
+        if (button1 == false && button2 == false) {
+          console.log(button1);
+          document.getElementById("btn1").style.display = "none";
+          document.getElementById("btn2").style.display = "block";
+
+          button1 = true;
+        }
+      }
+
+      // BOX2
+      function btn2_controller() {
+        // alert(1111);
+        if (button1 == false || button2 == false) {
+          console.log(button2);
+          document.getElementById("btn1").style.display = "block";
+          document.getElementById("btn2").style.display = "none";
+
+          button2 = true;
+        } else if (button1 == true || button2 == false) {
+          console.log(button1);
+          console.log(button2);
+          document.getElementById("btn2").style.display = "none";
+          document.getElementById("btn1").style.display = "block";
+
+          button1 = false;
+          button2 = true;
+        }
+      }
+    </script>
+
+    <!-- editor -->
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/40.0.0/ckeditor.min.js"></script>
+    <script>
+      ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
+        // console.error(error);
+      });
+    </script>
+    <script>
+      ClassicEditor.create(document.querySelector("#editor1")).catch(
+        (error) => {
+          // console.error(error);
+        }
+      );
+    </script>
+    <script>
+      ClassicEditor.create(document.querySelector("#editor2")).catch(
+        (error) => {
+          // console.error(error);
+        }
+      );
+    </script>
+    <script>
+      ClassicEditor.create(document.querySelector("#editor3")).catch(
+        (error) => {
+          // console.error(error);
+        }
+      );
+    </script>
+    <script>
+      ClassicEditor.create(document.querySelector("#editor4")).catch(
+        (error) => {
+          // console.error(error);
+        }
+      );
+    </script>
+    <script>
+      ClassicEditor.create(document.querySelector("#editor5")).catch(
+        (error) => {
+          // console.error(error);
+        }
+      );
+    </script>
+
+    <!-- profile  upload  script -->
+    <script>
+      var loadFile = function (event) {
+        var image = document.getElementById("output");  
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
+    </script>
+  </body>
+</html>
